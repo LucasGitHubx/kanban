@@ -20,7 +20,7 @@ export default function LogoutPage() {
       <h2>Click the button to log out</h2>
       <button onClick={handleClick}>Log Out</button>
 
-      {alreadyLoggedOut ? <Navigate to="/" /> : undefined}
+      {alreadyLoggedOut ? <Navigate to="/kanban/" /> : undefined}
     </div>
   );
 }

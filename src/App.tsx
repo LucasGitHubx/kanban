@@ -13,7 +13,7 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/kanban/" element={<MainLayout />}>
-        <Route path="/kanban/" index element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="/kanban/login" element={<LoginPage />} />
         <Route path="/kanban/logout" element={<LogoutPage />} />
       </Route>

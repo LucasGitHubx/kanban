@@ -108,7 +108,7 @@ export default function LoginPage() {
         )}
       </div>
 
-      {alreadyLoggedIn ? <Navigate to="/" replace /> : undefined}
+      {alreadyLoggedIn ? <Navigate to="/kanban/" replace /> : undefined}
     </div>
   );
 }
