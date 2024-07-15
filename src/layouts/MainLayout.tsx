@@ -27,16 +27,16 @@ export default function MainLayout() {
         <nav>
           <ul>
             <li>
-              <NavLink to="">My board</NavLink>
+              <NavLink to="/kanban/">My board</NavLink>
             </li>
             <li>
-              <NavLink to="">About us</NavLink>
+              <NavLink to="/kanban/">About us</NavLink>
             </li>
             <li>
               {userr == null ? (
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/kanban/login">Login</NavLink>
               ) : (
-                <NavLink to="/logout">Logout</NavLink>
+                <NavLink to="/kanban/logout">Logout</NavLink>
               )}
             </li>
           </ul>

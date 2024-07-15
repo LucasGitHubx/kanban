@@ -12,10 +12,10 @@ import LogoutPage from "./pages/LogoutPage";
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="logout" element={<LogoutPage />} />
+      <Route path="/kanban/" element={<MainLayout />}>
+        <Route path="/kanban/" index element={<HomePage />} />
+        <Route path="/kanban/login" element={<LoginPage />} />
+        <Route path="/kanban/logout" element={<LogoutPage />} />
       </Route>
     )
   );
