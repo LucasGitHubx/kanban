@@ -1,6 +1,25 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { useUserStore } from "../store/userStore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useEffect } from "react";
 
 export default function MainLayout() {
+  const { userr, setUser } = useUserStore((state) => ({
+    userr: state.user,
+    setUser: state.setUser,
+  }));
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+
   return (
     <>
       <header>
@@ -14,7 +33,11 @@ export default function MainLayout() {
               <NavLink to="">About us</NavLink>
             </li>
             <li>
-              <NavLink to="/login">Login</NavLink>
+              {userr == null ? (
+                <NavLink to="/login">Login</NavLink>
+              ) : (
+                <NavLink to="/logout">Logout</NavLink>
+              )}
             </li>
           </ul>
         </nav>
