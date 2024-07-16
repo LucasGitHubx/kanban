@@ -17,10 +17,13 @@ import { useDoneTaskStore } from "../store/useTaskStore";
 import TaskRender from "../components/TaskRender";
 
 // ANYTHING ELSE
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import FormAddTask from "../components/FormAddTask";
 
 export default function BoardPage() {
+  const [activeAddTask, setActiveAddTask] = useState<boolean>(false);
+
   const { userr, setUser } = useUserStore((state) => ({
     userr: state.user,
     setUser: state.setUser,
@@ -72,6 +75,12 @@ export default function BoardPage() {
       {userr == null ? <Navigate to="/kanban/login" /> : undefined}
 
       <h2>{userEmail}'s board</h2>
+      <button className="add-task" onClick={() => setActiveAddTask(true)}>
+        Add Task
+      </button>
+      {activeAddTask ? (
+        <FormAddTask setActiveAddTask={setActiveAddTask} email={userEmail} />
+      ) : undefined}
 
       <div className="columns">
         <div className="normal-tasks column-tasks">
