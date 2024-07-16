@@ -23,7 +23,9 @@ export default function MainLayout() {
   return (
     <>
       <header>
-        <h1>Kanban Board</h1>
+        <h1>
+          <NavLink to="/kanban/">Kanban Board</NavLink>
+        </h1>
         <nav>
           <ul>
             <li>
