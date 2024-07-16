@@ -8,6 +8,7 @@ import {
   where,
   doc,
   deleteDoc,
+  addDoc,
 } from "firebase/firestore";
 
 const db = getFirestore(app);
@@ -44,6 +45,18 @@ export async function getNormalTasks(
 
     setTasks(normalTasks);
     setLoaded(true);
+  } catch (error: any) {
+    alert(error.message);
+  }
+}
+export async function addNormalTask(
+  task: Task,
+  setNormalTask: (task: Task[]) => void,
+  setLoaded: (value: boolean) => void
+) {
+  try {
+    await addDoc(normalTaskCollection, task);
+    getNormalTasks(setNormalTask, setLoaded, task.taskAuthor);
   } catch (error: any) {
     alert(error.message);
   }
@@ -105,9 +118,21 @@ export async function deleteInProgressTask(
   try {
     const docRef = doc(db, "InProgressTasks", idTask);
     await deleteDoc(docRef);
-    getNormalTasks(setInProgressTasks, setLoaded, taskAuthor);
+    getInProgressTasks(setInProgressTasks, setLoaded, taskAuthor);
   } catch (e: any) {
     alert(e.message);
+  }
+}
+export async function addInProgressTask(
+  task: Task,
+  setInProgressTask: (task: Task[]) => void,
+  setLoaded: (value: boolean) => void
+) {
+  try {
+    await addDoc(inProgressTaskCollection, task);
+    getInProgressTasks(setInProgressTask, setLoaded, task.taskAuthor);
+  } catch (error: any) {
+    alert(error.message);
   }
 }
 // ACTIONS FOR THE IN PROGRESS TASK COLLECTION
@@ -149,8 +174,20 @@ export async function deleteDoneTask(
   try {
     const docRef = doc(db, "doneTasks", idTask);
     await deleteDoc(docRef);
-    getNormalTasks(setDoneTasks, setLoaded, taskAuthor);
+    getDoneTasks(setDoneTasks, setLoaded, taskAuthor);
   } catch (e: any) {
     alert(e.message);
+  }
+}
+export async function addDoneTask(
+  task: Task,
+  setDoneTask: (task: Task[]) => void,
+  setLoaded: (value: boolean) => void
+) {
+  try {
+    await addDoc(doneTasksCollection, task);
+    getDoneTasks(setDoneTask, setLoaded, task.taskAuthor);
+  } catch (error: any) {
+    alert(error.message);
   }
 }
