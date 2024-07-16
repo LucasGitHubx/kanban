@@ -85,7 +85,12 @@ export default function BoardPage() {
             <div className="tasks">
               {tasks.map((task) => {
                 return (
-                  <TaskRender task={task} key={task.taskID} state="normal" />
+                  <TaskRender
+                    task={task}
+                    key={task.taskID}
+                    state="normal"
+                    email={userEmail}
+                  />
                 );
               })}
             </div>
@@ -107,6 +112,7 @@ export default function BoardPage() {
                     task={task}
                     key={task.taskID}
                     state="in-progress"
+                    email={userEmail}
                   />
                 );
               })}
@@ -125,7 +131,12 @@ export default function BoardPage() {
             <div className="tasks">
               {doneTasks.map((task) => {
                 return (
-                  <TaskRender task={task} key={task.taskID} state="done" />
+                  <TaskRender
+                    task={task}
+                    key={task.taskID}
+                    state="done"
+                    email={userEmail}
+                  />
                 );
               })}
             </div>
