@@ -305,6 +305,7 @@ div.login {
   justify-content: right;
 }
 .task .buttons button {
+  cursor: pointer;
   width: 80px;
   padding: 2px 5px;
   border: none;
