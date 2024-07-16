@@ -1,6 +1,6 @@
 export interface Task {
-  taskID?: string;
+  taskID: string;
   taskName: string;
   taskDescription: string;
-  taskAuthor: string;
+  taskAuthor: string | null | undefined;
 }
